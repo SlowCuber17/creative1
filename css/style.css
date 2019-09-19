@@ -1,3 +1,112 @@
 .tcenter {
     text-align: center;
 }
+
+.bg-blue-custom {
+    background-color: #004af1;
+}
+
+.nav-link {
+    color: white;
+}
+
+.form-inline {
+    float: right;
+}
+
+.custom-btn {
+    background-color: #004af1;
+    color: #ffffff;
+    transition-duration: 0.2s;
+}
+
+/*.jon-btn-active {
+    background-color: white;
+    color: #004af1;
+    transition-duration: 0.1s;
+    border-radius:2px;
+}
+
+.jon-btn-active:hover {
+    background-color: #e2e2e2;
+    color: #002e5d;
+}*/
+
+.jon-btn {
+    background-color: #004af1;
+    color: white;
+    transition-duration: 0.1s;
+    border-radius:2px;
+}
+
+.jon-btn:hover {
+    background-color: #003ec9;
+    color: #d2d2d2;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+.title {
+    color: white;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.verdana {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.num-btn{
+    background-color: #d2d2d2;
+    border-radius:5px;
+    padding:10px;
+}
+
+.num-btn:hover{
+    background-color: #c1c1c1;
+    border-radius:5px;
+    padding:10px;
+}
+
+.num {
+    border-color: #d2d2d2;
+    border-radius:5px;
+    border-style: solid;
+    padding:10px;
+}
+
+.dice:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dice-active {
+    border-color: #d2d2d2;
+    border-radius:5px;
+    border-style: solid;
+    padding-top:25px;
+    padding-bottom:25px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.dice-active:hover {
+    border-color: #c1c1c1;
+    border-radius:5px;
+    border-style: solid;
+}
+
+.btn-roll {
+    border-radius:5px;
+    background-color: #004af1;
+    color:white;
+}
+
+.btn-roll:hover {
+    background-color: #003ec9;
+    color:white;
+}

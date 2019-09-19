@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<link rel="shortcut icon" href="images/dndlogo.png">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<title>Creative Project 1: Dice Roller</title>
+
+</head>
+<body>
+  
+<nav class="navbar fixed-top navbar-expand-lg bg-blue-custom">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link jon-btn" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link jon-btn" href="players.html">Players</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link jon-btn" href="dice.html">Dice Roller</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link jon-btn" href="monster.html">Monsters</a>
+      </li>
+    </ul>
+    <span class="navbar-text title"><strong>Dungeon Master Tool</strong></span>
+    <form class="form-inline">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn custom-btn" type="submit">
+        <span class="fa fa-search"></span>
+      </button>
+    </form>
+</nav>
+
+<h1 class="tcenter verdana">Dice Roller</h1>
+
+<p class="tcenter">Please select the number of dice you want to roll, the modifier you want to add, and the type of dice you want to roll.</p>
+
+<br>
+
+<div class="row">
+    <div class="col-sm-offset-2 col-sm-4 tcenter">
+        <p>Number of dice:</p>
+        <span class="fa fa-arrow-left num-btn" onClick="decreaseNum()"></span>&nbsp;
+        <span class="num" id="num">1</span>&nbsp;
+        <span class="fa fa-arrow-right num-btn" onClick="increaseNum()"></span>
+    </div>
+    <div class="col-sm-4 tcenter">
+        <p>Modifier added:</p>
+        <span class="fa fa-arrow-left num-btn" onClick="decreaseMod()"></span>
+        <span class="num" id="mod">0</span>
+        <span class="fa fa-arrow-right num-btn" onClick="increaseMod()"></span>
+    </div>
+</div>
+
+<br><br><br>
+
+<div class="row tcenter">
+    <div class="col-sm-offset-3 col-sm-1">
+        <span id="d4"><img class="dice" src="images/d4.png" width="50"></span>
+    </div>
+    <div class="col-sm-1">
+        <span id="d6"><img class="dice" src="images/d6.png" width="50"></span>
+    </div>
+    <div class="col-sm-1">
+        <span id="d8"><img class="dice" src="images/d8.png" width="50"></span>
+    </div>
+    <div class="col-sm-1">
+        <span id="d10"><img class="dice" src="images/d10.png" width="50"></span>
+    </div>
+    <div class="col-sm-1">
+        <span id="d12"><img class="dice" src="images/d12.png" width="50"></span>
+    </div>
+    <div class="col-sm-1">
+        <span id="d20"><img class="dice" src="images/d20.png" width="50"></span>
+    </div>
+</div>
+
+<br><br>
+
+<div class="row">
+    <div class="col-sm-offset-1 col-sm-10 tcenter">
+        <button class="btn btn-roll hidden" id="btn">Roll Dice</button>
+    </div>
+</div>
+
+<br><br>
+
+<div class="row">
+    <div class="col-sm-offset-1 col-sm-10 tcenter">
+        <span class="hidden num" id="roll">0</span>
+    </div>
+</div>
+
+<div class="footer">
+  <a href="https://github.com/SlowCuber17/creative1" target="_blank">
+    <span class="fa fa-github" style="font-size: 24px"></span>&nbsp;&nbsp;GitHub
+  </a>
+</div>
+
+<script>
+    var num = 1;
+    var mod = 0;
+    var dice = "";
+    var result = 0;
+    var end = 0;
+    
+    updateNum();
+    updateMod();
+    
+    function decreaseNum(){
+        num--;
+        updateNum();
+    }
+    
+    function increaseNum(){
+        num++;
+        updateNum();
+    }
+    
+    function updateNum(){
+        document.getElementById("num").innerHTML = num;
+    }
+    
+    function decreaseMod(){
+        mod--;
+        updateMod();
+    }
+    
+    function increaseMod(){
+        mod++;
+        updateMod();
+    }
+    
+    function updateMod(){
+        if(mod < 0){
+            document.getElementById("mod").innerHTML = mod;
+        }
+        else{
+            document.getElementById("mod").innerHTML = "+" + mod;
+        }
+    }
+    
+    function updateRoll(){
+        document.getElementById("roll").innerHTML = end;
+    }
+    
+    $(document).ready(function(){
+        $("#d4").click(function(){
+            $(this).addClass("dice-active");
+            $("#d6").removeClass("dice-active");
+            $("#d8").removeClass("dice-active");
+            $("#d10").removeClass("dice-active");
+            $("#d12").removeClass("dice-active");
+            $("#d20").removeClass("dice-active");
+            $("#btn").removeClass("hidden");
+            dice = "d4";
+        });
+        $("#d6").click(function(){
+            $(this).addClass("dice-active");
+            $("#d4").removeClass("dice-active");
+            $("#d8").removeClass("dice-active");
+            $("#d10").removeClass("dice-active");
+            $("#d12").removeClass("dice-active");
+            $("#d20").removeClass("dice-active");
+            $("#btn").removeClass("hidden");
+            dice = "d6";
+        });
+        $("#d8").click(function(){
+            $(this).addClass("dice-active");
+            $("#d6").removeClass("dice-active");
+            $("#d4").removeClass("dice-active");
+            $("#d10").removeClass("dice-active");
+            $("#d12").removeClass("dice-active");
+            $("#d20").removeClass("dice-active");
+            $("#btn").removeClass("hidden");
+            dice = "d8";
+        });
+        $("#d10").click(function(){
+            $(this).addClass("dice-active");
+            $("#d6").removeClass("dice-active");
+            $("#d8").removeClass("dice-active");
+            $("#d4").removeClass("dice-active");
+            $("#d12").removeClass("dice-active");
+            $("#d20").removeClass("dice-active");
+            $("#btn").removeClass("hidden");
+            dice = "d10";
+        });
+        $("#d12").click(function(){
+            $(this).addClass("dice-active");
+            $("#d6").removeClass("dice-active");
+            $("#d8").removeClass("dice-active");
+            $("#d10").removeClass("dice-active");
+            $("#d4").removeClass("dice-active");
+            $("#d20").removeClass("dice-active");
+            $("#btn").removeClass("hidden");
+            dice = "d12";
+        });
+        $("#d20").click(function(){
+            $(this).addClass("dice-active");
+            $("#d6").removeClass("dice-active");
+            $("#d8").removeClass("dice-active");
+            $("#d10").removeClass("dice-active");
+            $("#d12").removeClass("dice-active");
+            $("#d4").removeClass("dice-active");
+            $("#btn").removeClass("hidden");
+            dice = "d20";
+        });
+        $("#btn").click(function(){
+            if(dice == "d4"){
+                result = (Math.random() * 4) + 1;
+            }
+            else if(dice == "d6"){
+                result = (Math.random() * 6) + 1;
+            }
+            else if(dice == "d8"){
+                result = (Math.random() * 8) + 1;
+            }
+            else if(dice == "d10"){
+                result = (Math.random() * 10) + 1;
+            }
+            else if(dice == "d12"){
+                result = (Math.random() * 12) + 1;
+            }
+            else if(dice == "d20"){
+                result = (Math.random() * 20) + 1;
+            }
+            end = Math.floor(result);
+            end *= num;
+            end += mod;
+            updateRoll();
+            $("#roll").removeClass("hidden");
+        });
+    });
+</script>
+
+</body>
+
+</html>
