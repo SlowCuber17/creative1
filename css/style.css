@@ -138,3 +138,8 @@
     border-radius:5px;
     padding:5px;
 }
+
+.player-link, .player-link:hover, .player-link:active, .player-link:visited {
+    text-decoration: none;
+    color:black;
+}
